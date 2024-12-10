@@ -1,0 +1,33 @@
+services:
+    webserver:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        environment:
+            VIRTUAL_HOST: hospital-management-app.local
+        extra_hosts:
+            - host.docker.internal:host-gateway
+        container_name: HOSPITAL_MANAGEMENT_SERVER
+        ports:
+            - "8082:80"
+        volumes:
+            - .:/var/www/
+            - ./docker/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+            - ./docker/php/conf.d/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
+
+        depends_on:
+            - mysql
+    mysql:
+        image: "mysql:8.0"
+        tty: true
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_DATABASE: ${DB_DATABASE}
+            SERVICE_NAME: mysql
+        container_name: HOSPITAL_MANAGEMENT_DBSERVER
+        volumes:
+            - ./mysql/data:/var/lib/mysql
