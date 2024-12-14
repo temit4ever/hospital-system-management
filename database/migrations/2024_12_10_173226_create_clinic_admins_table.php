@@ -11,16 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clinics', function (Blueprint $table) {
+        Schema::create('clinic_admins', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->index();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Admin user
+            $table->foreignId('clinic_id')->constrained('clinics')->onDelete('cascade');
             $table->string('address');
             $table->string('phone');
-            $table->string('email')->index()->unique();
             $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->string('user_type')->default('clinic_admin');
+            $table->date('date_of_birth');
+            $table->dateTime('last_login')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
+
     }
 
     /**
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clinics');
+        Schema::dropIfExists('clinic_admins');
     }
 };
