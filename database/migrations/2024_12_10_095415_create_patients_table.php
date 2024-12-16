@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clinics', function (Blueprint $table) {
+        Schema::create('patients', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->index();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('address');
             $table->string('phone');
-            $table->string('email')->index()->unique();
-            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->string('user_type')->default('patient');
+            $table->date('date_of_birth');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clinics');
+        Schema::dropIfExists('patients');
     }
 };
