@@ -19,8 +19,8 @@ return new class extends Migration
             $table->time('start_time')->index();
             $table->time('end_time')->index();
             $table->text('reason');
-            $table->text('diagnose')->nullable();
-            $table->text('prescription')->nullable();
+            $table->text('diagnose')->nullable(); // Show only to doctors/nurses
+            $table->text('prescription')->nullable(); // Show only to doctors/nurses
             $table->enum('status', ['attended', 'absent', 'awaiting'])->default('awaiting')->index();
             $table->timestamps();
             $table->softDeletes();
