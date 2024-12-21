@@ -12,23 +12,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-
-        // Create Permissions
-        Permission::create(['name' => 'manage clinics']);
-        Permission::create(['name' => 'manage departments']);
-        Permission::create(['name' => 'manage appointments']);
-        Permission::create(['name' => 'manage schedules']);
-        Permission::create(['name' => 'manage teams']);
-        Permission::create(['name' => 'manage patients']);
-        Permission::create(['name' => 'manage settings']);
-        Permission::create(['name' => 'view teams']);
-        Permission::create(['name' => 'view appointments']);
-        Permission::create(['name' => 'view patients']);
-
-
-        // For Super-admin use to customise some dashboard settings that will be seen by all other user types
-        Permission::create(['name' => 'patient']);
-
         // Create Roles
         $super_admin = Role::create(['name' => 'super-admin']);
         $clinical_admin = Role::create(['name' => 'clinical-admin']);
@@ -38,12 +21,27 @@ return new class extends Migration
         // For future use when we decide to allow all patient to directly use the system
         $patient = Role::create(['name' => 'patient-as-user']);
 
+        // Create Permissions
+        Permission::create(['name' => 'manage clinics']);
+        Permission::create(['name' => 'manage departments']);
+        Permission::create(['name' => 'manage appointments']);
+        Permission::create(['name' => 'manage schedules']);
+        Permission::create(['name' => 'manage teams']);
+        Permission::create(['name' => 'manage patients']);
+        Permission::create(['name' => 'view schedules']);
+        Permission::create(['name' => 'view teams']);
+        Permission::create(['name' => 'view appointments']);
+        Permission::create(['name' => 'view patients']);
+
+        // For Super-admin use to customise some dashboard settings that will be seen by all other user types
+        Permission::create(['name' => 'manage settings']);
+
         // Assign Permissions to roles
         $super_admin->givePermissionTo(Permission::all());
         $clinical_admin->givePermissionTo(['manage clinics', 'view appointments', 'manage departments', 'manage teams', 'view patients']);
         $department_admin->givePermissionTo(['view teams', 'manage appointments', 'manage schedules', 'manage patients']);
-        $team_member->givePermissionTo(['manage appointments', 'view teams', 'manage patients']);
-        $patient->givePermissionTo(['view appointments', 'view patients']);
+        $team_member->givePermissionTo(['manage appointments', 'view teams', 'manage patients', 'view schedules']);
+        $patient->givePermissionTo(['manage appointments', 'view schedules']);
     }
 
     /**
