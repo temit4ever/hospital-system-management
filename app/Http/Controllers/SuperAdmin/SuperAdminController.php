@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\SuperAdmin;
 
-use App\Models\Schedule;
+use App\Http\Controllers\Controller;
+use App\Models\SuperAdmin;
 use Illuminate\Http\Request;
 
-class ScheduleController extends Controller
+class SuperAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class ScheduleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Schedule $schedule)
+    public function show(SuperAdmin $superAdmin)
     {
         //
     }
@@ -42,7 +43,7 @@ class ScheduleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Schedule $schedule)
+    public function edit(SuperAdmin $superAdmin)
     {
         //
     }
@@ -50,7 +51,7 @@ class ScheduleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Schedule $schedule)
+    public function update(Request $request, SuperAdmin $superAdmin)
     {
         //
     }
@@ -58,7 +59,7 @@ class ScheduleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Schedule $schedule)
+    public function destroy(SuperAdmin $superAdmin)
     {
         //
     }

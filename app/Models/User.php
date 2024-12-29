@@ -80,4 +80,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Patient::class, 'user_id');
     }
+
+    public function superAdmin(): HasOne
+    {
+        return $this->hasOne(SuperAdmin::class, 'user_id');
+    }
 }
