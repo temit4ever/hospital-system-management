@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Team;
 
-use App\Models\Clinic;
+use App\Http\Controllers\Controller;
+use App\Models\TeamMember;
 use Illuminate\Http\Request;
 
-class ClinicController extends Controller
+class TeamMemberController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class ClinicController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Clinic $clinic)
+    public function show(TeamMember $teamMember)
     {
         //
     }
@@ -42,7 +43,7 @@ class ClinicController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Clinic $clinic)
+    public function edit(TeamMember $teamMember)
     {
         //
     }
@@ -50,7 +51,7 @@ class ClinicController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Clinic $clinic)
+    public function update(Request $request, TeamMember $teamMember)
     {
         //
     }
@@ -58,7 +59,7 @@ class ClinicController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Clinic $clinic)
+    public function destroy(TeamMember $teamMember)
     {
         //
     }

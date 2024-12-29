@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('address');
             $table->string('phone');
-            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->enum('status', ['1', '0'])->default('1');
             $table->string('user_type')->default('department_admin');
             $table->date('date_of_birth');
             $table->dateTime('last_login')->nullable();

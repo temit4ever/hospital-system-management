@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Patient;
 
-use App\Models\DepartmentAdmin;
+use App\Http\Controllers\Controller;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
-class DepartmentAdminController extends Controller
+class PatientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class DepartmentAdminController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(DepartmentAdmin $departmentAdmin)
+    public function show(Patient $patient)
     {
         //
     }
@@ -42,7 +43,7 @@ class DepartmentAdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(DepartmentAdmin $departmentAdmin)
+    public function edit(Patient $patient)
     {
         //
     }
@@ -50,7 +51,7 @@ class DepartmentAdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DepartmentAdmin $departmentAdmin)
+    public function update(Request $request, Patient $patient)
     {
         //
     }
@@ -58,7 +59,7 @@ class DepartmentAdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DepartmentAdmin $departmentAdmin)
+    public function destroy(Patient $patient)
     {
         //
     }
